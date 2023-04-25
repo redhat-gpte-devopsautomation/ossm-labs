@@ -2,16 +2,22 @@
 {{- $domain := .Values.agnosticd.domain }}
 {{- $consoleUrl := printf "https://console-openshift-console.%s;OpenShift Console" $domain }}
 {{- $kialiUrl := printf "https://kiali-%%USERNAME%%-dev-istio-system.%s;Kiali" $domain }}
-{{- $urls := list $consoleUrl $kialiUrl }}
+{{- $assertsUrl := printf "https://github.com/skoussou/summit-2023-ossm-labs/;Labs Asset Repository" $domain }}
+{{- $urls := list $consoleUrl $assertsUrl }}
 {{- join "," $urls }}
 {{- end }}
 
 {{- define "usertool.labModuleUrls" }}
 {{- $domain := .Values.agnosticd.domain }}
-{{- $params := printf "?USERID=%%USERNAME%%&SUBDOMAIN=%s" $domain }}
-{{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m1/intro.html%s;Scenario 1" $domain $params }}
-{{- $module2 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m2/intro.html%s;Scenario 2" $domain $params }}
-{{- $module3 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m3/intro.html%s;Scenario 3" $domain $params }}
+{{- $params := printf "?USERID=%%USERNAME%%&LAB_PARTICIPANT_ID=%%USERNAME%%&SUBDOMAIN=%s" $domain }}
+{{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/intro/intro.html%s;Travel Demo Use Case Introduction" $domain $params }}
+{{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m1/intro.html%s;Designing a Service Mesh" $domain $params }}
+{{- $module2 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m2/intro.html%s;Using the Observability Stack" $domain $params }}
+{{- $module3 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m3/intro.html%s;Setting up a Production Environment" $domain $params }}
+{{- $module4 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m4/intro.html%s;Applying Authz and Authn" $domain $params }}
+{{- $module5 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m5/intro.html%s;Hardening the Production Setup" $domain $params }}
+{{- $module6 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m6/intro.html%s;Service Mesh Day 2 Operations" $domain $params }}
+
 {{- $urls := list $module1 $module2 $module3 }}
 {{- join "," $urls }}
 {{- end }}
