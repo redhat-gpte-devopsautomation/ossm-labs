@@ -1,1 +1,1 @@
-= Red Hat OSSM Labs Assets
+= Red Hat OSSM Labs - Helm Charts

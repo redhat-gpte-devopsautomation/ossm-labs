@@ -1,0 +1,35 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ossm
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+{{- $userCount := int .Values.user.count }}
+{{- range $index := until $userCount }}
+      - user: {{ $.Values.user.prefix }}{{ add $index 1}}
+{{- end }}
+  template:
+    metadata:
+      name: ossm-{{- "{{" }} user {{- " }}" }}
+      namespace: openshift-gitops
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.ossm.git.url }}
+        targetRevision: {{ .Values.ossm.git.revision }}
+        path: {{ .Values.ossm.git.path }}
+        helm:
+          values: |
+            user: '{{- "{{" }} user {{- " }}" }}'
+            domain: {{ .Values.agnosticd.domain }}
+            mykey: {{ .Values.ossm.values.myKey }}
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: false

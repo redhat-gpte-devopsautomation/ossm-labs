@@ -1,0 +1,6 @@
+# Default values for ossm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+user: user1
+domain: apps.cluster-guid.sandbox.opentlc.com
