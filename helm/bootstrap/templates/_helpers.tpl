@@ -2,7 +2,7 @@
 {{- $domain := .Values.agnosticd.domain }}
 {{- $consoleUrl := printf "https://console-openshift-console.%s;OpenShift Console" $domain }}
 {{- $kialiUrl := printf "https://kiali-%%USERNAME%%-dev-istio-system.%s;Kiali" $domain }}
-{{- $assertsUrl := printf "https://github.com/skoussou/summit-2023-ossm-labs/;Labs Asset Repository" $domain }}
+{{- $assertsUrl := printf "https://github.com/skoussou/summit-2023-ossm-labs/;Labs Asset Repository" }}
 {{- $urls := list $consoleUrl $assertsUrl }}
 {{- join "," $urls }}
 {{- end }}
