@@ -9,7 +9,8 @@
 
 {{- define "usertool.labModuleUrls" }}
 {{- $domain := .Values.agnosticd.domain }}
-{{- $params := printf "?USERID=%%USERNAME%%&LAB_PARTICIPANT_ID=%%USERNAME%%&SUBDOMAIN=%s" $domain }}
+{{- $apiUrl := .Values.agnosticd.apiUrl }}
+{{- $params := printf "?LAB_PARTICIPANT_ID=%%USERNAME%%&OCP_DOMAIN=%s&API_URL=%s" $domain $apiUrl }}
 {{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/intro/intro.html%s;Travel Demo Use Case Introduction" $domain $params }}
 {{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m1/intro.html%s;Designing a Service Mesh" $domain $params }}
 {{- $module2 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m2/intro.html%s;Using the Observability Stack" $domain $params }}

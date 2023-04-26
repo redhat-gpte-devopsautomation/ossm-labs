@@ -8,6 +8,7 @@ user:
 
 agnosticd:
   domain: apps.cluster-guid.sandbox.opentlc.com
+  apiUrl: api.cluster-guid.sandbox.opentlc.com
 
 ossm:
   git:
