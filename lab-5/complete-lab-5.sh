@@ -211,7 +211,7 @@ spec:
 
 echo "Verify applied business authz policies"
 echo "---------------------------------------"
-sleep 3
+sleep 7
 
 ./login-as.sh emma
 echo
