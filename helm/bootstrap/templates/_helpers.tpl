@@ -18,6 +18,6 @@
 {{- $module5 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m5/intro.html%s;Hardening the Production Setup" $domain $params }}
 {{- $module6 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m6/intro.html%s;Service Mesh Day 2 Operations" $domain $params }}
 
-{{- $urls := list $module1 $module2 $module3 }}
+{{- $urls := list $module1 $module2 $module3 $module4 $module5 $module6}}
 {{- join "," $urls }}
 {{- end }}
