@@ -17,7 +17,7 @@ cd $BASE_DIR/certs-resources
 echo
 echo
 echo "=========================================================================================================="
-echo " Creating openssl.cnf for ROOT CA (<BASE_DIR>/certs-resources/openssl.cnf)                   "
+echo " Creating openssl.cnf for ROOT CA (lab-5/certs-resources/openssl.cnf)                   "
 echo "=========================================================================================================="
 echo
 
@@ -157,7 +157,7 @@ extendedKeyUsage = critical, OCSPSigning' > openssl.cnf
 
 echo
 echo "=========================================================================================================="
-echo " Creating openssl.cnf for INTERMEDIATE CA (<BASE_DIR>/certs-resources/intermediate/openssl.cnf)           "
+echo " Creating openssl.cnf for INTERMEDIATE CA (lab-5/certs-resources/intermediate/openssl.cnf)           "
 echo "=========================================================================================================="
 echo
 
