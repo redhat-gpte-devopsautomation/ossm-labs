@@ -13,7 +13,7 @@ agnosticd:
 ossm:
   git:
     url: https://github.com/skoussou/summit-2023-ossm-labs
-    revision: helm-v1.0.0
+    revision: helm
     path: helm/ossm
   values:
     myKey: myValue
