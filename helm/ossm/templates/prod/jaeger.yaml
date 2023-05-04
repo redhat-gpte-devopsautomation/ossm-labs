@@ -1,7 +1,7 @@
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
-  name: jaeger-small-production
+  name: {{ .Values.user }}-jaeger-small-production
   namespace: {{ .Values.user }}-prod-istio-system  
   annotations:
     argocd.argoproj.io/sync-wave: "10"  
