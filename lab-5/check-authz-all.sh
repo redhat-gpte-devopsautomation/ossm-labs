@@ -23,7 +23,7 @@ TOKEN=$(curl -sLk --data "username=gtouser&password=gtouser&grant_type=password&
 #echo TOKEN: $TOKEN
 echo "---------------------------------------------------------------------------------------"
 echo
-sleep 4
+sleep 8
 
 travels=$(curl -s -o /dev/null -w "%{http_code}" -X GET --cacert $CERTS_LOCATION/ca-root.crt --key $CERTS_LOCATION/curl-client.key --cert $CERTS_LOCATION/curl-client.crt -H "Authorization: Bearer $TOKEN" https://$GATEWAY_URL/travels/Tallinn |jq)
 cars=$(curl -s -o /dev/null -w "%{http_code}" -X GET --cacert $CERTS_LOCATION/ca-root.crt --key $CERTS_LOCATION/curl-client.key --cert $CERTS_LOCATION/curl-client.crt -H "Authorization: Bearer $TOKEN" https://$GATEWAY_URL/cars/Tallinn |jq)

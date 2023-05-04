@@ -243,20 +243,20 @@ echo
 oc rollout pause deployment/control -n $ENV-travel-control
 oc patch deployment/control -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-control
 oc rollout resume deployment/control -n $ENV-travel-control
-oc patch deployment/control -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-control
+oc patch deployment/control -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-control
 
 oc rollout pause deployment/travels -n $ENV-travel-portal
-oc patch deployment/travels -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-portal
+oc patch deployment/travels -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-portal
 oc rollout resume deployment/travels -n $ENV-travel-portal
 oc patch deployment/travels -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-portal
 
 oc rollout pause deployment/viaggi -n $ENV-travel-portal
-oc patch deployment/viaggi -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-portal
+oc patch deployment/viaggi -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-portal
 oc rollout resume deployment/viaggi -n $ENV-travel-portal
 oc patch deployment/viaggi -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-portal
 
 oc rollout pause deployment/voyages -n $ENV-travel-portal
-oc patch deployment/voyages -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-portal
+oc patch deployment/voyages -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-portal
 oc rollout resume deployment/voyages -n $ENV-travel-portal
 oc patch deployment/voyages -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-portal
 

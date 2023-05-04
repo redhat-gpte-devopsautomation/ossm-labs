@@ -7,6 +7,7 @@ LAB_PARTICIPANT_ID=$3
 
 SM_TENANT_NAME=$LAB_PARTICIPANT_ID-production
 SM_CP_NS=$LAB_PARTICIPANT_ID-prod-istio-system
+SM_JAEGER_RESOURCE=$LAB_PARTICIPANT_ID-jaeger-small-production
 
 echo
 echo "---Values Used-----------------------------------------------"
@@ -14,6 +15,7 @@ echo "OCP_DOMAIN:            $OCP_DOMAIN"
 echo "LAB_PARTICIPANT_ID:    $LAB_PARTICIPANT_ID"
 echo "SM_TENANT_NAME:        $SM_TENANT_NAME"
 echo "SM_CP_NS:              $SM_CP_NS"
+echo "SM_JAEGER_RESOURCE:    $SM_JAEGER_RESOURCE"
 echo "-------------------------------------------------------------"
 set -e
 
@@ -129,7 +131,7 @@ spec:
           enabled: true
         storage:
           type: Elasticsearch
-      name: jaeger-small-production
+      name: $SM_JAEGER_RESOURCE
     kiali:
       enabled: true
     prometheus:
@@ -252,7 +254,7 @@ spec:
           enabled: true
         storage:
           type: Elasticsearch
-      name: jaeger-small-production
+      name: $SM_JAEGER_RESOURCE
     kiali:
       enabled: true
     prometheus:
@@ -466,6 +468,6 @@ echo
 echo "----- TOKEN RECEIVED FOR GTO USER BEFORE AUTHZ TESTS-----"
 echo $TOKEN
 echo "---------------------------------------------------------"
-sleep 2
+sleep 7
 
 ./call-via-mtls-and-jwt-travel-agency-api.sh $LAB_PARTICIPANT_ID-prod-istio-system gto-$LAB_PARTICIPANT_ID $TOKEN

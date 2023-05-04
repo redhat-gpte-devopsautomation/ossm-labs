@@ -18,6 +18,7 @@ echo '--------------------------------------------------------------------------
 sleep 10
 
 
+
 echo
 echo "Create deployments"
 echo "-------------------------------------------------"
@@ -454,38 +455,40 @@ echo "Add Deployments in the mesh by injecting Jaeger Tracing and Jaeger Agent  
 echo "---------------------------------------------------------------------------------"
 echo
 
+
 oc rollout pause deployment/cars-v1 -n $ENV-travel-agency
-oc patch deployment/cars-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+
+oc patch deployment/cars-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/cars-v1 -n $ENV-travel-agency
 oc patch deployment/cars-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/discounts-v1 -n $ENV-travel-agency
-oc patch deployment/discounts-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/discounts-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/discounts-v1 -n $ENV-travel-agency
 oc patch deployment/discounts-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/flights-v1 -n $ENV-travel-agency
-oc patch deployment/flights-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/flights-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/flights-v1 -n $ENV-travel-agency
 oc patch deployment/flights-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/hotels-v1 -n $ENV-travel-agency
-oc patch deployment/hotels-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/hotels-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/hotels-v1 -n $ENV-travel-agency
 oc patch deployment/hotels-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/insurances-v1 -n $ENV-travel-agency
-oc patch deployment/insurances-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/insurances-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/insurances-v1 -n $ENV-travel-agency
 oc patch deployment/insurances-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/mysqldb-v1 -n $ENV-travel-agency
-oc patch deployment/mysqldb-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/mysqldb-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/mysqldb-v1 -n $ENV-travel-agency
 oc patch deployment/mysqldb-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 
 oc rollout pause deployment/travels-v1 -n $ENV-travel-agency
-oc patch deployment/travels-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "jaeger-small-production"}}}' -n $ENV-travel-agency
+oc patch deployment/travels-v1 -p '{"metadata":{"annotations":{"sidecar.jaegertracing.io/inject": "'${PARTICIPANTID}-jaeger-small-production'"}}}' -n $ENV-travel-agency
 oc rollout resume deployment/travels-v1 -n $ENV-travel-agency
 oc patch deployment/travels-v1 -p '{"spec":{"template":{"metadata":{"annotations":{"sidecar.istio.io/inject": "true"}}}}}' -n $ENV-travel-agency
 

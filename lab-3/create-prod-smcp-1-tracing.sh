@@ -2,18 +2,20 @@
 
 SM_CP_NS=$1
 SM_TENANT_NAME=$2
+SM_JAEGER_RESOURCE=$3
 
 echo '---------------------------------------------------------------------------'
-echo 'ServiceMesh Namespace                      : '$SM_CP_NS
-echo 'ServiceMesh Control Plane Tenant Name      : '$SM_TENANT_NAME
+echo 'ServiceMesh Namespace                       : '$SM_CP_NS
+echo 'ServiceMesh Control Plane Tenant Name       : '$SM_TENANT_NAME
+echo 'ServiceMesh Jaeger Production Resource Name : '$SM_JAEGER_RESOURCE
 echo '---------------------------------------------------------------------------'
 
-echo "############# Creating jaeger-small-production Resource in Namespace [$SM_CP_NS ] #############"
+echo "############# Creating $SM_JAEGER_RESOURCEResource in Namespace [$SM_CP_NS ] #############"
 
 echo "apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
-  name: jaeger-small-production
+  name: $SM_JAEGER_RESOURCE
 spec:
   strategy: production
   storage:
@@ -47,7 +49,7 @@ else
   echo "apiVersion: jaegertracing.io/v1
   kind: Jaeger
   metadata:
-    name: jaeger-small-production
+    name: $SM_JAEGER_RESOURCE
   spec:
     strategy: production
     storage:
@@ -105,7 +107,7 @@ sleep 1
 echo
 oc -n $SM_CP_NS get deployment
 echo
-oc -n $SM_CP_NS get jaeger/jaeger-small-production
+oc -n $SM_CP_NS get jaeger/$SM_JAEGER_RESOURCE
 echo
 echo
 echo
@@ -152,7 +154,7 @@ spec:
           enabled: true
         storage:
           type: Elasticsearch
-      name: jaeger-small-production
+      name: $SM_JAEGER_RESOURCE
     kiali:
       enabled: true
     prometheus:
@@ -201,7 +203,7 @@ spec:
           enabled: true
         storage:
           type: Elasticsearch
-      name: jaeger-small-production
+      name: $SM_JAEGER_RESOURCE
     kiali:
       enabled: true
     prometheus:

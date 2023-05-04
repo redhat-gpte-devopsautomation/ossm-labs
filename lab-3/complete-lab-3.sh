@@ -19,7 +19,7 @@ echo ""
 echo ""
 
 ./login-as.sh emma
-./create-prod-smcp-1-tracing.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production
+./create-prod-smcp-1-tracing.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production $LAB_PARTICIPANT_ID-jaeger-small-production
 
 sleep 5
 
@@ -52,4 +52,4 @@ sleep 10
 ./create-https-ingress-gateway.sh prod-istio-system $OCP_DOMAIN $LAB_PARTICIPANT_ID
 ./update-prod-smcp-2-prometheus.sh $LAB_PARTICIPANT_ID-prod-istio-system
 sleep 10
-./update-prod-smcp-3-final.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production
+./update-prod-smcp-3-final.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production $LAB_PARTICIPANT_ID-jaeger-small-production
