@@ -3,7 +3,7 @@
 {{- $consoleUrl := printf "https://console-openshift-console.%s;OpenShift Console" $domain }}
 {{- $kialiUrl := printf "https://kiali-%%USERNAME%%-dev-istio-system.%s;Kiali" $domain }}
 {{- $codeServer := printf "https://codeserver-codeserver-%%USERNAME%%.%s;Code Server" $domain }}
-{{- $assertsUrl := printf "https://github.com/skoussou/summit-2023-ossm-labs/;Labs Asset Repository" }}
+{{- $assertsUrl := printf "https://github.com/redhat-gpte-devopsautomation/ossm-labs/;Labs Asset Repository" }}
 {{- $urls := list $consoleUrl $codeServer $assertsUrl }}
 {{- join "," $urls }}
 {{- end }}
