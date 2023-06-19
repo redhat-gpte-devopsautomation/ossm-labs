@@ -6,6 +6,8 @@ user:
   count: 2
   prefix: user
 
+jobNamespace: users-job
+
 agnosticd:
   domain: apps.cluster-guid.sandbox.opentlc.com
   apiUrl: https://api.cluster-guid.sandbox.opentlc.com:6443

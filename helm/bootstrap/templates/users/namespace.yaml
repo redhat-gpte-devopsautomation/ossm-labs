@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.jobNamespace }}
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    openshift.io/display-name: "User Jobs"
+    openshift.io/description: "Kubernetes job to add users."
