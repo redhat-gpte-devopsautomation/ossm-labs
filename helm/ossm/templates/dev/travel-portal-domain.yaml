@@ -284,6 +284,7 @@ metadata:
   namespace: {{ .Values.user }}-dev-travel-control
   annotations:
     argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   hosts:
     - istio-ingressgateway-{{ .Values.user }}-dev-istio-system.{{ .Values.domain }}
@@ -303,6 +304,7 @@ metadata:
   namespace: {{ .Values.user }}-dev-travel-control
   annotations:
     argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   host: control.{{ .Values.user }}-dev-travel-control.svc.cluster.local
   subsets:
