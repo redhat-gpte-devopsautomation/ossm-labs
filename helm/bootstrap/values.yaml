@@ -7,6 +7,7 @@ user:
   prefix: user
 
 jobNamespace: users-job
+infoNamespace: openshift-gitops
 
 agnosticd:
   domain: apps.cluster-guid.sandbox.opentlc.com

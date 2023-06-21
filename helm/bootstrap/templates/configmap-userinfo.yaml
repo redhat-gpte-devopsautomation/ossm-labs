@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: userinfo
+  namespace: {{ .Values.infoNamespace }}
+  labels:
+    demo.redhat.com/userinfo: ""
+data:
+  usertool_url: "https://get-a-username.{{ .Values.deployer.domain }}"
+  guides_url: "https://guides-guides.{{ .Values.deployer.domain }}/summit-ossm-labs-guides/main/intro/intro.html"
