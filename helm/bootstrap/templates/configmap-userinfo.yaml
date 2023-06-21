@@ -7,5 +7,5 @@ metadata:
   labels:
     demo.redhat.com/userinfo: ""
 data:
-  usertool_url: "https://get-a-username.{{ .Values.deployer.domain }}"
-  guides_url: "https://guides-guides.{{ .Values.deployer.domain }}/ossm-labs-guides/main/intro/intro.html"
+  usertool_url: "https://get-a-username-{{ .Values.usertool.namespace }}.{{ .Values.deployer.domain }}"
+  guides_url: "https://guides-{{ .Values.guides.namespace }}.{{ .Values.deployer.domain }}/ossm-labs-guides/main/intro/intro.html"
