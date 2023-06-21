@@ -8,4 +8,4 @@ metadata:
     demo.redhat.com/userinfo: ""
 data:
   usertool_url: "https://get-a-username.{{ .Values.deployer.domain }}"
-  guides_url: "https://guides-guides.{{ .Values.deployer.domain }}/summit-ossm-labs-guides/main/intro/intro.html"
+  guides_url: "https://guides-guides.{{ .Values.deployer.domain }}/ossm-labs-guides/main/intro/intro.html"
