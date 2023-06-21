@@ -1,5 +1,5 @@
 {{- define "usertool.labExtraUrls" }}
-{{- $domain := .Values.agnosticd.domain }}
+{{- $domain := .Values.deployer.domain }}
 {{- $consoleUrl := printf "https://console-openshift-console.%s;OpenShift Console" $domain }}
 {{- $kialiUrl := printf "https://kiali-%%USERNAME%%-dev-istio-system.%s;Kiali" $domain }}
 {{- $codeServer := printf "https://codeserver-codeserver-%%USERNAME%%.%s;Code Server" $domain }}
@@ -9,8 +9,8 @@
 {{- end }}
 
 {{- define "usertool.labModuleUrls" }}
-{{- $domain := .Values.agnosticd.domain }}
-{{- $apiUrl := .Values.agnosticd.apiUrl }}
+{{- $domain := .Values.deployer.domain }}
+{{- $apiUrl := .Values.deployer.apiUrl }}
 {{- $params := printf "?LAB_PARTICIPANT_ID=%%USERNAME%%&OCP_DOMAIN=%s&API_URL=%s" $domain $apiUrl }}
 {{- $module0 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/intro/intro.html%s;Travel Demo Introduction (3 mins)" $domain $params }}
 {{- $module1 := printf "https://guides-guides.%s/summit-ossm-labs-guides/main/m1/intro.html%s;Designing a Service Mesh (7 mins)" $domain $params }}
