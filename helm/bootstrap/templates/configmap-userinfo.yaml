@@ -9,3 +9,4 @@ metadata:
 data:
   usertool_url: "https://get-a-username-{{ .Values.usertool.namespace }}.{{ .Values.deployer.domain }}"
   guides_url: "https://guides-{{ .Values.guides.namespace }}.{{ .Values.deployer.domain }}/ossm-labs-guides/main/intro/intro.html"
+  argocd_url: "https://openshift-gitops-server-openshift-gitops.{{ .Values.deployer.domain }}"
