@@ -6,7 +6,6 @@ user:
   count: 2
   prefix: user
 
-jobNamespace: users-job
 infoNamespace: openshift-gitops
 
 deployer:
@@ -39,3 +38,7 @@ guides:
   repoPath: chart
   namespace: guides
   image: ghcr.io/redhat-gpte-devopsautomation/ossm-labs-guides:latest
+
+labUsers:
+  ocpSecret: htpasswd
+  jobNamespace: users-job

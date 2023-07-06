@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: users-job
-  namespace: {{ .Values.jobNamespace }}
+  namespace: {{ .Values.labUsers.jobNamespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
 ---
@@ -20,13 +20,13 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: users-job
-  namespace: {{ .Values.jobNamespace }}
+  namespace: {{ .Values.labUsers.jobNamespace }}
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
   name: users-job
-  namespace: {{ .Values.jobNamespace }}
+  namespace: {{ .Values.labUsers.jobNamespace }}
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
