@@ -18,9 +18,8 @@ data:
           kubernetes.core.k8s_info:
             api_version: v1
             kind: Secret
+            name: htpasswd
             namespace: openshift-config
-            label_selectors:
-            - "api.openshift.com/type=identity-provider"
           register: r_htpasswd_secret
         - name: create htpasswd file with secret value
           ansible.builtin.copy:
