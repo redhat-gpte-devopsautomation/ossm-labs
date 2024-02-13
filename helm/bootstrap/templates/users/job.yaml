@@ -37,7 +37,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: ansible
-        image: quay.io/agnosticd/ee-multicloud:pr-6537
+        image: quay.io/agnosticd/ee-multicloud:v0.1.1
         command: ["ansible-playbook"]
         args: ["/ansible/playbook.yaml"]
         volumeMounts:
