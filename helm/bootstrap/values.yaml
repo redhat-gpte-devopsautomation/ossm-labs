@@ -15,7 +15,7 @@ deployer:
 
 ossm:
   git:
-    url: https://github.com/skoussou/summit-2023-ossm-labs
+    url: https://github.com/skoussou/ossm-labs
     revision: helm
     path: helm/ossm
   values:
