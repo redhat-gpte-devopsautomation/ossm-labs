@@ -15,7 +15,7 @@ deployer:
 
 ossm:
   git:
-    url: https://github.com/skoussou/ossm-labs
+    url: https://github.com/redhat-gpte-devopsautomation/ossm-labs
     revision: helm
     path: helm/ossm
   values:
@@ -34,8 +34,8 @@ usertool:
   labAccessToken: password
 
 guides:
-  repoUrl: https://github.com/skoussou/summit-ossm-labs-guides
+  repoUrl: https://github.com/redhat-gpte-devopsautomation/ossm-labs-guides
   repoRevision: main
   repoPath: chart
   namespace: guides
-  image: ghcr.io/skoussou/summit-ossm-labs-guides:latest
+  image: ghcr.io/redhat-gpte-devopsautomation/ossm-labs-guides:latest
