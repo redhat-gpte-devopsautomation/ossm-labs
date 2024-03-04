@@ -9,7 +9,7 @@ metadata:
 data:
   playbook.yaml: |
     ---
-    - name: Example Playbook
+    - name: add users playbook
       hosts: localhost
       connection: local
       gather_facts: false
