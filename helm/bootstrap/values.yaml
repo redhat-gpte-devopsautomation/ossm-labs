@@ -21,18 +21,6 @@ ossm:
   values:
     myKey: myValue
 
-usertool:
-  repoUrl: https://github.com/redhat-gpte-devopsautomation/user-distribution
-  repoRevision: v0.0.1
-  repoPath: chart
-  namespace: usertool
-  image: quay.io/openshiftlabs/username-distribution:1.4
-  redisImage: registry.redhat.io/rhel8/redis-6:1-118
-  labDuration: 1week
-  labAdminPassword: password
-  labUserPassword: password
-  labAccessToken: password
-
 guides:
   repoUrl: https://github.com/skoussou/summit-ossm-labs-guides
   repoRevision: main
