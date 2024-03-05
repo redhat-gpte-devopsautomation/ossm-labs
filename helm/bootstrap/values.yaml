@@ -2,9 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-user:
-  count: 2
-  prefix: user
+user: user1
 
 jobNamespace: users-job
 infoNamespace: openshift-gitops
@@ -20,18 +18,6 @@ ossm:
     path: helm/ossm
   values:
     myKey: myValue
-
-usertool:
-  repoUrl: https://github.com/redhat-gpte-devopsautomation/user-distribution
-  repoRevision: v0.0.1
-  repoPath: chart
-  namespace: usertool
-  image: quay.io/openshiftlabs/username-distribution:1.4
-  redisImage: registry.redhat.io/rhel8/redis-6:1-118
-  labDuration: 1week
-  labAdminPassword: password
-  labUserPassword: password
-  labAccessToken: password
 
 guides:
   repoUrl: https://github.com/redhat-gpte-devopsautomation/ossm-labs-guides
