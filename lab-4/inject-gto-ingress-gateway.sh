@@ -78,7 +78,8 @@ spec:
         inject.istio.io/templates: gateway
       labels:
         gw: $PREFIX-injection
-        sidecar.istio.io/inject: "true"
+        app: $PREFIX-ingressgateway
+        sidecar.istio.io/inject: \"true\"
     spec:
       containers:
       - name: istio-proxy
@@ -106,7 +107,8 @@ spec:
         inject.istio.io/templates: gateway
       labels:
         gw: $PREFIX-injection
-        sidecar.istio.io/inject: "true"
+        app: $PREFIX-ingressgateway
+        sidecar.istio.io/inject: \"true\"
     spec:
       containers:
       - name: istio-proxy
@@ -140,7 +142,7 @@ metadata:
   name: $PREFIX-ingressgateway-sds
   namespace: $TA_NS
 rules:
-  - apiGroups: [""]
+  - apiGroups: [\"\"]
     resources: ["secrets"]
     verbs: ["get", "watch", "list"]" | oc apply -n $TA_NS -f -
 
