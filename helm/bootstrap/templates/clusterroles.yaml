@@ -135,6 +135,12 @@ rules:
   - deployments
   verbs:
   - '*'
+- apiGroups:
+  - kiali.io
+  verbs:
+  - '*'
+  resources:
+  - ossmconsoles  
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
