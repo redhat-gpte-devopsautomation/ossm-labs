@@ -159,7 +159,7 @@ spec:
       enabled: true
     prometheus:
       enabled: true
-  version: v2.4
+  version: v2.5
   telemetry:
     type: Istiod"
     
@@ -208,7 +208,7 @@ spec:
       enabled: true
     prometheus:
       enabled: true
-  version: v2.4
+  version: v2.5
   telemetry:
     type: Istiod"| oc apply -n $SM_CP_NS -f -
 
