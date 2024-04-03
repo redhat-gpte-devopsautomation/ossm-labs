@@ -267,9 +267,10 @@ spec:
 echo
 sleep 5
 
+echo "Specify the minimum number of pods that must be running on the node. This example ensures one replica is running if a pod gets restarted on a new node"
+sleep 3
 echo "Setup $PREFIX-ingressgateway Disruption"
 echo "-------------------------------------------------------"
-#Specify the minimum number of pods that must be running on the node. This example ensures one replica is running if a pod gets restarted on a new node.
 echo "apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
