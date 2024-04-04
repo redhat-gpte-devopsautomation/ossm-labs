@@ -16,7 +16,7 @@ echo "#                                                                  #"
 echo "####################################################################"
 
 echo "---------------------------------------------------------------------------------------"
-GATEWAY_URL=$(oc get route gto-$PARTICIPANTID -o jsonpath='{.spec.host}' -n $SM_CP_NS)
+GATEWAY_URL=$(oc get route gto-$PARTICIPANTID -o jsonpath='{.spec.host}' -n $PARTICIPANTID-prod-travel-agancy)
 echo GATEWAY_URL:  $GATEWAY_URL
 echo
 TOKEN=$(curl -sLk --data "username=gtouser&password=gtouser&grant_type=password&client_id=istio-$PARTICIPANTID&client_secret=$SSO_CLIENT_SECRET" https://keycloak-rhsso.$OCP_DOMAIN/auth/realms/servicemesh-lab/protocol/openid-connect/token | jq .access_token)
