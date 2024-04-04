@@ -12,10 +12,11 @@ echo 'ServiceMesh Control Plane Tenant Name       : '$SM_TENANT_NAME
 echo 'ServiceMesh Jaeger Production Resource Name : '$SM_JAEGER_RESOURCE
 echo '---------------------------------------------------------------------------'
 
-
+echo
+echo
 echo "############# Update SM Tenant [$SM_TENANT_NAME] in Namespace [$SM_CP_NS ] to remove OSSM monitoring stack #############"
 
-sleep 3
+sleep 4
 
 echo "apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
@@ -220,6 +221,7 @@ sleep 6
 
 echo "############# Integrater SM Tenant [$SM_TENANT_NAME] with OCP user-workload monitoring #############"
 
+
 echo "kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -232,9 +234,9 @@ spec:
   ingress:
     - {}
   policyTypes:
-    - Ingress
----
-apiVersion: networking.k8s.io/v1
+    - Ingress" |oc apply -f -
+
+echo "apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: user-workload-access
@@ -247,10 +249,10 @@ spec:
           network.openshift.io/policy-group: monitoring
   podSelector: {}
   policyTypes:
-  - Ingress
----
-# Source: user-workload-monitoring/templates/networkpolicies.yaml
-apiVersion: networking.k8s.io/v1
+  - Ingress" |oc apply -f -
+
+
+echo "apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: user-workload-access
@@ -263,11 +265,10 @@ spec:
           network.openshift.io/policy-group: monitoring
   podSelector: {}
   policyTypes:
-  - Ingress"
+  - Ingress" |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/networkpolicies.yaml
-apiVersion: networking.k8s.io/v1
+
+echo "apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: user-workload-access
@@ -280,11 +281,10 @@ spec:
           network.openshift.io/policy-group: monitoring
   podSelector: {}
   policyTypes:
-  - Ingress
+  - Ingress"   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/clusterrole-prometheus-monitoring-exporter-istio-system.yaml
-kind: ClusterRole
+
+echo "kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: prometheus-monitoring-exporter-istio-system
@@ -296,11 +296,9 @@ rules:
     apiGroups:
       - ''
     resources:
-      - namespaces
+      - namespaces"   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/clusterrolebinding-kiali-prometheus-monitoring-exporter-istio-system.yaml
-apiVersion: rbac.authorization.k8s.io/v1
+echo "apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: kiali-prometheus-monitoring-exporter-istio-system
@@ -311,10 +309,9 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kiali-service-account
-  namespace: $SM_CP_NS
----
-# Source: user-workload-monitoring/templates/kiali-kiali.yaml
-apiVersion: kiali.io/v1alpha1
+  namespace: $SM_CP_NS"   |oc apply -f -
+
+echo "apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
   name: kiali-user-workload-monitoring
@@ -393,11 +390,9 @@ spec:
       use_grpc: false
   installation_tag: 'Kiali [$SM_CP_NS'
   istio_namespace: $SM_CP_NS
-  version: v1.73
+  version: v1.73"   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/podmonitors-istio-proxies-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
+echo 'apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -438,11 +433,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id
+      targetLabel: mesh_id'   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/podmonitors-istio-proxies-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
+echo 'apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -483,11 +476,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id
+      targetLabel: mesh_id'   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/podmonitors-istio-proxies-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
+echo 'apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -528,11 +519,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id
+      targetLabel: mesh_id'   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/podmonitors-istio-proxies-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
+echo 'apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -573,11 +562,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id
+      targetLabel: mesh_id'   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/servicemonitor-istiod-monitor.yaml
-apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: istiod-monitor
@@ -594,11 +581,9 @@ spec:
     relabelings:
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id
+      targetLabel: mesh_id"   |oc apply -f -
 
----
-# Source: user-workload-monitoring/templates/telemetry.yaml
-apiVersion: telemetry.istio.io/v1alpha1
+echo "apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
   name: enable-prometheus-metrics
@@ -606,4 +591,4 @@ metadata:
 spec:
   metrics:
   - providers:
-    - name: prometheus
+    - name: prometheus   |oc apply -f -
