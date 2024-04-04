@@ -162,23 +162,7 @@ spec:
     type: Istiod
   addons:
     grafana:
-      enabled: true
-      install:
-        config:
-          env: {}
-          envSecrets: {}
-        persistence:
-          storageClassName: ""
-          accessMode: ReadWriteOnce
-          capacity:
-            requests:
-              storage: 5Gi
-          enabled: true
-        service:
-          ingress:
-            contextPath: /grafana
-            tls:
-              termination: reencrypt
+      enabled: false
     jaeger:
       install:
         ingress:
@@ -187,9 +171,9 @@ spec:
           type: Elasticsearch
       name: $SM_JAEGER_RESOURCE
     kiali:
-      enabled: true
+      name: kiali-user-workload-monitoring
     prometheus:
-      enabled: true
+      enabled: false
   runtime:
     components:
       pilot:
@@ -272,23 +256,7 @@ spec:
     type: Istiod
   addons:
     grafana:
-      enabled: true
-      install:
-        config:
-          env: {}
-          envSecrets: {}
-        persistence:
-          storageClassName: ""
-          accessMode: ReadWriteOnce
-          capacity:
-            requests:
-              storage: 5Gi
-          enabled: true
-        service:
-          ingress:
-            contextPath: /grafana
-            tls:
-              termination: reencrypt
+      enabled: false
     jaeger:
       install:
         ingress:
@@ -297,9 +265,9 @@ spec:
           type: Elasticsearch
       name: $SM_JAEGER_RESOURCE
     kiali:
-      enabled: true
+      name: kiali-user-workload-monitoring
     prometheus:
-      enabled: true
+      enabled: false
   runtime:
     components:
       pilot:
