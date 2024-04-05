@@ -372,6 +372,7 @@ rules:
   resources:
     - ClusterRoleBinding
     - clusterroles
+    - clusterrolebindings
   verbs:
     - get
     - list
@@ -387,3 +388,16 @@ rules:
   resources:
     - ossmconsoles
     - kialis
+- apiGroups:
+    - monitoring.coreos.com
+  verbs:
+    - '*'
+  resources:
+    - ServiceMonitor
+- apiGroups:
+    - telemetry.istio.io
+  verbs:
+    - '*'
+  resources:
+    - Telemetry
+
