@@ -219,7 +219,10 @@ oc -n $SM_CP_NS  get smcp/$SM_TENANT_NAME
 
 sleep 6
 
-echo "############# Integrater SM Tenant [$SM_TENANT_NAME] with OCP user-workload monitoring #############"
+echo
+echo
+echo
+echo "############# Integrate SM Tenant [$SM_TENANT_NAME] with OCP user-workload monitoring #############"
 
 
 echo "kind: NetworkPolicy
