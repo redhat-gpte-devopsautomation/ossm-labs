@@ -395,7 +395,7 @@ spec:
   istio_namespace: $SM_CP_NS
   version: v1.73"   |oc apply -f -
 
-echo 'apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -436,9 +436,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id'   |oc apply -f -
+      targetLabel: mesh_id"   |oc apply -f -
 
-echo 'apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -479,9 +479,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id'   |oc apply -f -
+      targetLabel: mesh_id"   |oc apply -f -
 
-echo 'apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -522,9 +522,9 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id'   |oc apply -f -
+      targetLabel: mesh_id"   |oc apply -f -
 
-echo 'apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -565,7 +565,7 @@ spec:
       targetLabel: pod_name
     - action: replace
       replacement: $SM_TENANT_NAME-$SM_CP_NS
-      targetLabel: mesh_id'   |oc apply -f -
+      targetLabel: mesh_id"   |oc apply -f -
 
 echo "apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
