@@ -540,7 +540,7 @@ spec:
     relabelings:
     - action: keep
       sourceLabels: [__meta_kubernetes_pod_container_name]
-      regex: "istio-proxy"
+      regex: \"istio-proxy\"
     - action: keep
       sourceLabels: [__meta_kubernetes_pod_annotationpresent_prometheus_io_scrape]
     - action: replace
@@ -556,7 +556,7 @@ spec:
       __meta_kubernetes_pod_ip]
       targetLabel: __address__
     - action: labeldrop
-      regex: "__meta_kubernetes_pod_label_(.+)"
+      regex: \"__meta_kubernetes_pod_label_(.+)\"
     - sourceLabels: [__meta_kubernetes_namespace]
       action: replace
       targetLabel: namespace
