@@ -5,6 +5,12 @@ metadata:
   name: servicemesh-operator-controlplane
 rules:
 - apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - ClusterRoleBinding
+  - clusterroles
+  - clusterrolebindings
+- apiGroups:
   - operators.coreos.com
   resources:
   - clusterserviceversions
@@ -367,12 +373,6 @@ rules:
   - watch
   - create
   - delete
-- apiGroups:
-    - rbac.authorization.k8s.io
-  resources:
-    - ClusterRoleBinding
-    - clusterroles
-    - clusterrolebindings
   verbs:
     - '*'
 - apiGroups:
