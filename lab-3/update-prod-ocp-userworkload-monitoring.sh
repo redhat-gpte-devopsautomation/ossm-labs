@@ -591,4 +591,4 @@ metadata:
 spec:
   metrics:
   - providers:
-    - name: prometheus   |oc apply -f -
+    - name: prometheus"   |oc apply -f -
