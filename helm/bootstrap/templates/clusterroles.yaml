@@ -385,13 +385,26 @@ rules:
 - apiGroups:
     - monitoring.coreos.com
   verbs:
-    - '*'
+    - get
+    - list
+    - patch
+    - update
+    - watch
+    - create
+    - delete
   resources:
     - ServiceMonitor
 - apiGroups:
     - telemetry.istio.io
   verbs:
-    - '*'
+    - get
+    - list
+    - patch
+    - update
+    - watch
+    - create
+    - delete
+- deletez
   resources:
     - Telemetry
 
