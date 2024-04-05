@@ -4,13 +4,13 @@ kind: ClusterRole
 metadata:
   name: servicemesh-operator-controlplane
 rules:
-  - apiGroups:
-      - kiali.io
-    verbs:
-      - '*'
-    resources:
-      - ossmconsoles
-      - kialis
+- apiGroups:
+  - kiali.io
+  verbs:
+  - '*'
+  resources:
+  - ossmconsoles
+  - kialis
 - apiGroups:
   - rbac.authorization.k8s.io
   resources:
@@ -368,9 +368,9 @@ metadata:
   name: mesh-monitoring
 rules:
 - apiGroups:
-    - networking.k8s.io
+  - networking.k8s.io
   resources:
-    - networkpolicies
+  - networkpolicies
   verbs:
   - get
   - list
@@ -379,8 +379,6 @@ rules:
   - watch
   - create
   - delete
-  verbs:
-    - '*'
 - apiGroups:
     - monitoring.coreos.com
   verbs:
