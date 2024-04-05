@@ -356,7 +356,7 @@ metadata:
   name: mesh-monitoring
 rules:
 - apiGroups:
-      - networking.k8s.io
+    - networking.k8s.io
   resources:
     - networkpolicies
   verbs:
@@ -374,13 +374,7 @@ rules:
     - clusterroles
     - clusterrolebindings
   verbs:
-    - get
-    - list
-    - patch
-    - update
-    - watch
-    - create
-    - delete
+    - '*'
 - apiGroups:
     - kiali.io
   verbs:
