@@ -395,7 +395,7 @@ spec:
   istio_namespace: $SM_CP_NS
   version: v1.73"   |oc apply -f -
 
-echo 'apiVersion: monitoring.coreos.com/v1
+echo "apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-proxies-monitor
@@ -411,12 +411,12 @@ spec:
     relabelings:
     - action: keep
       sourceLabels: [__meta_kubernetes_pod_container_name]
-      regex: "istio-proxy"
+      regex: \"istio-proxy\"
     - action: keep
       sourceLabels: [__meta_kubernetes_pod_annotationpresent_prometheus_io_scrape]
     - action: replace
-      regex: (\d+);(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})
-      replacement: '[$2]:$1'
+      regex: \"(\d+);(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})\"
+      replacement: \'[$2]:$1\'
       sourceLabels: [__meta_kubernetes_pod_annotation_prometheus_io_port,
       __meta_kubernetes_pod_ip]
       targetLabel: __address__
@@ -427,7 +427,7 @@ spec:
       __meta_kubernetes_pod_ip]
       targetLabel: __address__
     - action: labeldrop
-      regex: "__meta_kubernetes_pod_label_(.+)"
+      regex: \"__meta_kubernetes_pod_label_(.+)\"
     - sourceLabels: [__meta_kubernetes_namespace]
       action: replace
       targetLabel: namespace
