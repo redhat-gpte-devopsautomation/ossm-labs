@@ -9,6 +9,8 @@ rules:
   resources:
   - clusterroles
   - clusterrolebindings
+  verbs:
+    - '*'
 - apiGroups:
   - operators.coreos.com
   resources:
