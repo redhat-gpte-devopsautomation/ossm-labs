@@ -387,7 +387,7 @@ spec:
         use_kiali_token: false
         username: internal
       enabled: true
-      in_cluster_url: 'https://${SM_JAEGER_RESOURCE-query}.${SM_CP_NS}.svc'
+      in_cluster_url: 'https://${SM_JAEGER_RESOURCE-query}.${SM_CP_NS}.svc.cluster.local'
       namespace: $SM_CP_NS
       service: ''
       use_grpc: false
