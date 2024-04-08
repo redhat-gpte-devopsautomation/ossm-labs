@@ -387,11 +387,11 @@ spec:
         use_kiali_token: false
         username: internal
       enabled: true
-      in_cluster_url: 'https://$SM_JAEGER_RESOURCE-query.svc'
+      in_cluster_url: 'https://${SM_JAEGER_RESOURCE-query}.${$SM_CP_NS}.svc'
       namespace: $SM_CP_NS
       service: ''
       use_grpc: false
-  installation_tag: 'Kiali [$SM_CP_NS'
+  installation_tag: 'Kiali [$SM_CP_NS]'
   istio_namespace: $SM_CP_NS
   version: v1.73"   |oc apply -f -
 
