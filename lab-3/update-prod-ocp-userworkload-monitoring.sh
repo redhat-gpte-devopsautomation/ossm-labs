@@ -14,8 +14,8 @@ echo '--------------------------------------------------------------------------
 
 echo
 echo
-echo "############# Update SM Tenant [$SM_TENANT_NAME] in Namespace [$SM_CP_NS ] to remove OSSM monitoring stack #############"
-
+echo "############# Update SM Tenant [$SM_TENANT_NAME] in Namespace [$SM_CP_NS ] to replace OSSM monitoring stack with OCP user-workload monitoring #############"
+echo
 sleep 4
 
 echo "apiVersion: maistra.io/v2
@@ -387,7 +387,7 @@ spec:
         use_kiali_token: false
         username: internal
       enabled: true
-      in_cluster_url: 'https://${SM_JAEGER_RESOURCE-query}.${SM_CP_NS}.svc.cluster.local'
+      in_cluster_url: 'https://${SM_JAEGER_RESOURCE}-query.${SM_CP_NS}.svc.cluster.local'
       namespace: $SM_CP_NS
       service: ''
       use_grpc: false
