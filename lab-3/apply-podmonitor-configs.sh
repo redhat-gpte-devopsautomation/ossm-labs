@@ -3,7 +3,7 @@
 LAB_PARTICIPANT_ID=$1
 
 echo '---------------------------------------------------------------------------'
-echo 'LAB_PARTICIPANT_ID                       : 'LAB_PARTICIPANT_ID
+echo 'LAB_PARTICIPANT_ID                       : '$LAB_PARTICIPANT_ID
 echo '---------------------------------------------------------------------------'
 sleep 2
 
