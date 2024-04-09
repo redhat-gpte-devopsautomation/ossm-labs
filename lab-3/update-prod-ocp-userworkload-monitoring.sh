@@ -394,3 +394,11 @@ spec:
   installation_tag: 'Kiali [$SM_CP_NS]'
   istio_namespace: $SM_CP_NS
   version: v1.73"   |oc apply -f -
+
+echo
+echo
+echo
+echo "############# Applying PodMonitor configs in all the servicemesh namespaces #############"
+sleep 2
+
+./apply-podmonitor-configs.sh $LAB_PARTICIPANT_ID
