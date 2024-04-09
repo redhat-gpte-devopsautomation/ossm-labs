@@ -9,7 +9,7 @@ sleep 2
 
 echo "############# PodMonitor applied in $LAB_PARTICIPANT_ID-prod-istio-system namespace #############"
 echo
-sed 's@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@istio-system@g' pod-monitor.yaml > podmonitor-istio-system.yaml
+sed "s@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@istio-system@g" pod-monitor.yaml > podmonitor-istio-system.yaml
 cat podmonitor-istio-system.yaml
 
 sleep 5
@@ -21,7 +21,7 @@ echo
 echo
 echo "############# PodMonitor applied in $LAB_PARTICIPANT_ID-prod-travel-control namespace #############"
 echo
-sed 's@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-control@g' pod-monitor.yaml > podmonitor-travel-control.yaml
+sed "s@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-control@g" pod-monitor.yaml > podmonitor-travel-control.yaml
 cat podmonitor-travel-control.yaml
 
 sleep 5
@@ -31,7 +31,7 @@ echo
 echo
 echo "############# PodMonitor applied in $LAB_PARTICIPANT_ID-prod-travel-portal namespace #############"
 echo
-sed 's@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-portal@g' pod-monitor.yaml > podmonitor-travel-portal.yaml
+sed "s@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-portal@g" pod-monitor.yaml > podmonitor-travel-portal.yaml
 cat podmonitor-travel-portal.yaml
 
 sleep 5
@@ -41,7 +41,7 @@ echo
 echo
 echo "############# PodMonitor applied in $LAB_PARTICIPANT_ID-prod-travel-agency namespace #############"
 echo
-sed 's@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-agency@g' pod-monitor.yaml > podmonitor-travel-agency.yaml
+sed "s@USERX@$LAB_PARTICIPANT_ID@g; s@SMNAMESPACE@travel-agency@g" pod-monitor.yaml > podmonitor-travel-agency.yaml
 cat podmonitor-travel-agency.yaml
 
 sleep 5
@@ -55,7 +55,7 @@ echo "apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: istiod-monitor
-  namespace: {openshift_cluster_user_name}-prod-istio-system
+  namespace: $LAB_PARTICIPANT_ID-prod-istio-system
 spec:
   targetLabels:
   - app
@@ -67,7 +67,7 @@ spec:
     interval: 30s
     relabelings:
     - action: replace
-      replacement: {openshift_cluster_user_name}-production-{openshift_cluster_user_name}-prod-istio-system
+      replacement: $LAB_PARTICIPANT_ID-production-$LAB_PARTICIPANT_ID-prod-istio-system
       targetLabel: mesh_id"
 
 sleep 5
@@ -76,7 +76,7 @@ echo "apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: istiod-monitor
-  namespace: {openshift_cluster_user_name}-prod-istio-system
+  namespace: $LAB_PARTICIPANT_ID-prod-istio-system
 spec:
   targetLabels:
   - app
@@ -88,5 +88,5 @@ spec:
     interval: 30s
     relabelings:
     - action: replace
-      replacement: {openshift_cluster_user_name}-production-{openshift_cluster_user_name}-prod-istio-system
+      replacement: $LAB_PARTICIPANT_ID-production-$LAB_PARTICIPANT_ID-prod-istio-system
       targetLabel: mesh_id" |oc apply -f -
