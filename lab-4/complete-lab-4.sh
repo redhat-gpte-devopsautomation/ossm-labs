@@ -37,13 +37,11 @@ echo ""
 
 sleep 5
 
-echo "############# Verify the creation of the additional gateway gto in SM Tenant [$SM_TENANT_NAME] in Namespace [$LAB_PARTICIPANT_ID-prod-travel-agency ] #############"
+echo "############# Verify the creation of the additional gateway gto in SM Tenant [$SM_TENANT_NAME] in Namespace [$LAB_PARTICIPANT_ID-prod-travel-agency] #############"
 
 oc get pods -n $LAB_PARTICIPANT_ID-prod-travel-agency |grep gto
 sleep 3
 echo
-oc get routes -n $LAB_PARTICIPANT_ID-prod-travel-agency |grep "gto"
-sleep 5
 
 echo
 echo
