@@ -16,7 +16,7 @@ echo
 echo
 echo "############# Update SM Tenant [$SM_TENANT_NAME] in Namespace [$SM_CP_NS ] to replace OSSM monitoring stack with OCP user-workload monitoring #############"
 echo
-sleep 4
+sleep 8
 
 echo "apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
@@ -223,7 +223,7 @@ echo
 echo
 echo
 echo "############# Integrate SM Tenant [$SM_TENANT_NAME] with OCP user-workload monitoring #############"
-
+echo
 
 echo "kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
