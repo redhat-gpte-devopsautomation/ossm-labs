@@ -52,3 +52,47 @@ cat podmonitor-travel-agency.yaml
 
 sleep 5
 oc apply -f podmonitor-travel-agency.yaml
+
+echo
+echo
+echo "############# ServiceMonitor applied in $LAB_PARTICIPANT_ID-prod-istio-system namespace #############"
+echo
+echo "apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istiod-monitor
+  namespace: {openshift_cluster_user_name}-prod-istio-system
+spec:
+  targetLabels:
+  - app
+  selector:
+    matchLabels:
+      istio: pilot
+  endpoints:
+  - port: http-monitoring
+    interval: 30s
+    relabelings:
+    - action: replace
+      replacement: {openshift_cluster_user_name}-production-{openshift_cluster_user_name}-prod-istio-system
+      targetLabel: mesh_id"
+
+sleep 5
+
+echo "apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istiod-monitor
+  namespace: {openshift_cluster_user_name}-prod-istio-system
+spec:
+  targetLabels:
+  - app
+  selector:
+    matchLabels:
+      istio: pilot
+  endpoints:
+  - port: http-monitoring
+    interval: 30s
+    relabelings:
+    - action: replace
+      replacement: {openshift_cluster_user_name}-production-{openshift_cluster_user_name}-prod-istio-system
+      targetLabel: mesh_id" |oc apply -f -
