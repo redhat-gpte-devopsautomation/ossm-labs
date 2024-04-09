@@ -1,17 +1,11 @@
 #!/bin/bash
 
 LAB_PARTICIPANT_ID=$1
-SM_JAEGER_RESOURCE=$LAB_PARTICIPANT_ID-jaeger-small-production
-SM_CP_NS=$LAB_PARTICIPANT_ID-prod-istio-system
-SM_TENANT_NAME=$LAB_PARTICIPANT_ID-production
-
 
 echo '---------------------------------------------------------------------------'
 echo 'LAB_PARTICIPANT_ID                       : 'LAB_PARTICIPANT_ID
 echo '---------------------------------------------------------------------------'
 sleep 2
-
-
 
 echo "############# PodMonitor applied in $LAB_PARTICIPANT_ID-prod-istio-system namespace #############"
 echo
