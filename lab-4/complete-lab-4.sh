@@ -48,7 +48,7 @@ echo
 echo "############# Setup mtls for additional ingress gateway gto in SM Tenant [$SM_TENANT_NAME] in Namespace [$SM_CP_NS ] #############"
 sleep 2
 echo
-./create-external-mtls-https-ingress-gateway.sh prod-istio-system $OCP_DOMAIN $LAB_PARTICIPANT_ID
+./create-external-mtls-https-ingress-gateway.sh prod-travel-agency $OCP_DOMAIN $LAB_PARTICIPANT_ID
 
 sleep 10
 echo
@@ -61,7 +61,7 @@ echo "      namespace to allow requests via the above defined Gateway to reach t
 echo "      and travels. "
 echo "#############"
 sleep 3
-./deploy-external-travel-api-mtls-vs.sh $LAB_PARTICIPANT_ID-prod $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID
+./deploy-external-travel-api-mtls-vs.sh $LAB_PARTICIPANT_ID-prod $LAB_PARTICIPANT_ID-prod-travel-agency  $LAB_PARTICIPANT_ID
 
 sleep 10
 
@@ -178,7 +178,8 @@ echo
 sleep 3
 ./login-as.sh emma
 
-export GATEWAY_URL=$(oc -n $LAB_PARTICIPANT_ID-prod-istio-system get route gto-$LAB_PARTICIPANT_ID -o jsonpath='{.spec.host}')
+export GATEWAY_URL=$(oc -n $LAB_PARTICIPANT_ID-prod-travel-agency get route gto-$LAB_PARTICIPANT_ID -o jsonpath='{.spec.host}')
+
 echo $GATEWAY_URL
 
 echo
@@ -209,4 +210,4 @@ echo $TOKEN
 echo "---------------------------------------------------------"
 sleep 7
 
-./call-via-mtls-and-jwt-travel-agency-api.sh $LAB_PARTICIPANT_ID-prod-istio-system gto-$LAB_PARTICIPANT_ID $TOKEN
+./call-via-mtls-and-jwt-travel-agency-api.sh $LAB_PARTICIPANT_ID-prod-travel-agency gto-$LAB_PARTICIPANT_ID $TOKEN
