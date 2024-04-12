@@ -24,6 +24,8 @@ metadata:
   name: $SM_TENANT_NAME
 spec:
   security:
+    controlPlane:
+      mtls: true
     dataPlane:
       automtls: true
       mtls: true
@@ -118,6 +120,8 @@ metadata:
   name: $SM_TENANT_NAME
 spec:
   security:
+    controlPlane:
+      mtls: true
     dataPlane:
       automtls: true
       mtls: true
