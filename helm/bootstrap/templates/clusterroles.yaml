@@ -2,16 +2,40 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
+  name: servicemesh-operator-cert-manager
+rules:
+  - apiGroups:
+      - cert-manager.io
+    resources:
+      - clusterissuers
+      - issuers
+      - certificates
+      - certificaterequests
+    verbs:
+      - '*'
+  - apiGroups:
+      - rbac.authorization.k8s.io
+    resources:
+      - roles
+      - rolebindings
+  verbs:
+    - list
+    - create
+    - get
+    - apiGroups:
+        - cert-manager.io
+      resources:
+        - clusterissuers
+        - issuers
+        - certificates
+      verbs:
+        - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
   name: servicemesh-operator-controlplane
 rules:
-- apiGroups:
-  - cert-manager.io
-  resources:
-  - clusterissuers
-  - issuers
-  - certificates
-  verbs:
-    - '*'
 - apiGroups:
   - rbac.authorization.k8s.io
   resources:
@@ -19,15 +43,6 @@ rules:
   - clusterrolebindings
   verbs:
     - '*'
-- apiGroups:
-  - rbac.authorization.k8s.io
-  resources:
-  - roles
-  - rolebindings
-  verbs:
-    - list
-    - create
-    - get
 - apiGroups:
   - operators.coreos.com
   resources:
