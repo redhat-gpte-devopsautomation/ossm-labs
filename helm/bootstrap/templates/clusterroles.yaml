@@ -5,6 +5,14 @@ metadata:
   name: servicemesh-operator-controlplane
 rules:
 - apiGroups:
+  - cert-manager.io
+  resources:
+  - clusterissuers
+  - issuers
+  - certificates
+  verbs:
+    - '*'
+- apiGroups:
   - rbac.authorization.k8s.io
   resources:
   - clusterroles
