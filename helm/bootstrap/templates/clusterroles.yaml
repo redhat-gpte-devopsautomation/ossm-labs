@@ -21,6 +21,8 @@ rules:
   verbs:
     - list
     - create
+    - watch
+    - delete
     - get
 - apiGroups:
   - cert-manager.io
