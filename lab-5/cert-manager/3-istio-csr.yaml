@@ -19,7 +19,7 @@ app:
 
   istio:
     namespace: user1-prod-istio-system
-    revisions: ["basic"]
+    revisions: ["user1-production"]
 
   server:
     maxCertificateDuration: 5m
