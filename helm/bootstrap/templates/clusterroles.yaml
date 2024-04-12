@@ -5,6 +5,16 @@ metadata:
   name: servicemesh-operator-cert-manager
 rules:
 - apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+    - get
+    - create
+    - update
+    - watch
+    - list
+- apiGroups:
   - cert-manager.io
   resources:
   - clusterissuers
