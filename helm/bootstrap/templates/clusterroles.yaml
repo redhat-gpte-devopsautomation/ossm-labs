@@ -17,9 +17,17 @@ rules:
   resources:
   - clusterroles
   - clusterrolebindings
-  - roles
   verbs:
     - '*'
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+  - roles
+  - rolebindings
+  verbs:
+    - list
+    - create
+    - get
 - apiGroups:
   - operators.coreos.com
   resources:
