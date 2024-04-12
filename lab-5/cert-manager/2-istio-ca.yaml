@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: istio-ca
+  namespace: user1-prod-istio-system
+spec:
+  isCA: true
+  duration: 21600h
+  secretName: istio-ca
+  commonName: istio-ca.travelagency.com
+  subject:
+    organizations:
+      - travelagency.com
+  issuerRef:
+    name: root-ca
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: istio-ca
+  namespace: user1-prod-istio-system
+spec:
+  ca:
+    secretName: istio-ca
+
