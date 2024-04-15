@@ -63,5 +63,16 @@ spec:
     serviceNamespace: '$LAB_PARTICIPANT_ID-prod-istio-system'" | oc apply -f -
 
 ./update-prod-ocp-userworkload-monitoring.sh $LAB_PARTICIPANT_ID
+sleep 2
+echo "apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: enable-prometheus-metrics
+  namespace: $LAB_PARTICIPANT_ID-prod-istio-system
+spec:
+  metrics:
+  - providers:
+    - name: prometheus" |oc apply -f -
+
 sleep 10
 ./update-prod-smcp-3-final.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production $LAB_PARTICIPANT_ID-jaeger-small-production
