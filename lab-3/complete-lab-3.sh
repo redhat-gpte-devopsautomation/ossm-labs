@@ -50,6 +50,18 @@ sleep 10
 
 ./login-as.sh emma
 ./create-https-ingress-gateway.sh prod-istio-system $OCP_DOMAIN $LAB_PARTICIPANT_ID
+
+echo "apiVersion: kiali.io/v1alpha1
+kind: OSSMConsole
+metadata:
+  name: ossmconsole
+  namespace: openshift-operators
+spec:
+  version: default
+  kiali:
+    serviceName: 'kiali'
+    serviceNamespace: '$LAB_PARTICIPANT_ID-prod-istio-system'" | oc apply -f -
+
 ./update-prod-ocp-userworkload-monitoring.sh $LAB_PARTICIPANT_ID
 sleep 10
 ./update-prod-smcp-3-final.sh $LAB_PARTICIPANT_ID-prod-istio-system $LAB_PARTICIPANT_ID-production $LAB_PARTICIPANT_ID-jaeger-small-production
