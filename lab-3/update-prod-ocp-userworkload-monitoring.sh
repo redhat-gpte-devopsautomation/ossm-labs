@@ -19,100 +19,55 @@ echo
 sleep 8
 
 echo "apiVersion: maistra.io/v2
-kind: ServiceMeshControlPlane
-metadata:
-  name: $SM_TENANT_NAME
-spec:
-  security:
-    controlPlane:
-      mtls: true
-    dataPlane:
-      automtls: true
-      mtls: true
-  tracing:
-    sampling: 500
-    type: Jaeger
-  general:
-    logging:
-      logAsJSON: true
-  profiles:
-    - default
-  proxy:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 500m
-        memory: 128Mi
-    accessLogging:
-      file:
-        name: /dev/stdout
-    networking:
-      trafficControl:
-        inbound: {}
-        outbound:
-          policy: REGISTRY_ONLY
-  gateways:
-    egress:
-      enabled: true
-      runtime:
-        deployment:
-          autoScaling:
-            enabled: true
-            maxReplicas: 2
-            minReplicas: 2
-        pod: {}
-      service: {}
-    enabled: true
-    ingress:
-      enabled: true
-      runtime:
-        deployment:
-          autoScaling:
-            enabled: true
-            maxReplicas: 2
-            minReplicas: 2
-        pod: {}
-      service: {}
-    openshiftRoute:
-      enabled: false
-  policy:
-    type: Istiod
-  addons:
-    grafana:
-      enabled: false
-    jaeger:
-      install:
-        ingress:
-          enabled: true
-        storage:
-          type: Elasticsearch
-      name: $SM_JAEGER_RESOURCE
-    kiali:
-      name: kiali-user-workload-monitoring
-    prometheus:
-      enabled: false
-  runtime:
-    components:
-      pilot:
-        deployment:
-          replicas: 2
-        pod:
-          affinity: {}
-        container:
-          resources:
-          limits: {}
-          requirements: {}
-      grafana:
-        deployment: {}
-        pod: {}
-      kiali:
-        deployment: {}
-        pod: {}
-  version: v2.5
-  telemetry:
-    type: Istiod"
+     kind: ServiceMeshControlPlane
+     metadata:
+       name: $SM_TENANT_NAME
+     spec:
+       security:
+         controlPlane:
+           mtls: true
+         dataPlane:
+           automtls: true
+           mtls: true
+       tracing:
+         sampling: 2000
+         type: Jaeger
+       general:
+         logging:
+           logAsJSON: true
+       profiles:
+         - default
+       proxy:
+         accessLogging:
+           file:
+             name: /dev/stdout
+         networking:
+           trafficControl:
+             inbound: {}
+             outbound:
+               policy: REGISTRY_ONLY
+       gateways:
+         openshiftRoute:
+           enabled: false
+       policy:
+         type: Istiod
+       addons:
+         grafana:
+           enabled: false
+         jaeger:
+           install:
+             ingress:
+               enabled: true
+             storage:
+               type: Elasticsearch
+           name: $SM_JAEGER_RESOURCE
+         kiali:
+           name: kiali-user-workload-monitoring
+         prometheus:
+           enabled: false
+       version: v2.5
+       telemetry:
+         type: Istiod"
 
 echo "apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
@@ -126,7 +81,7 @@ spec:
       automtls: true
       mtls: true
   tracing:
-    sampling: 500
+    sampling: 2000
     type: Jaeger
   general:
     logging:
@@ -134,13 +89,6 @@ spec:
   profiles:
     - default
   proxy:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 500m
-        memory: 128Mi
     accessLogging:
       file:
         name: /dev/stdout
@@ -150,27 +98,6 @@ spec:
         outbound:
           policy: REGISTRY_ONLY
   gateways:
-    egress:
-      enabled: true
-      runtime:
-        deployment:
-          autoScaling:
-            enabled: true
-            maxReplicas: 2
-            minReplicas: 2
-        pod: {}
-      service: {}
-    enabled: true
-    ingress:
-      enabled: true
-      runtime:
-        deployment:
-          autoScaling:
-            enabled: true
-            maxReplicas: 2
-            minReplicas: 2
-        pod: {}
-      service: {}
     openshiftRoute:
       enabled: false
   policy:
@@ -189,23 +116,6 @@ spec:
       name: kiali-user-workload-monitoring
     prometheus:
       enabled: false
-  runtime:
-    components:
-      pilot:
-        deployment:
-          replicas: 2
-        pod:
-          affinity: {}
-        container:
-          resources:
-          limits: {}
-          requirements: {}
-      grafana:
-        deployment: {}
-        pod: {}
-      kiali:
-        deployment: {}
-        pod: {}
   version: v2.5
   telemetry:
     type: Istiod"| oc apply -n $SM_CP_NS -f -
