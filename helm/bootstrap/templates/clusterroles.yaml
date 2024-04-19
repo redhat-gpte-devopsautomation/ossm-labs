@@ -200,6 +200,12 @@ metadata:
   name: servicemesh-developer
 rules:
   - apiGroups:
+      - cert-manager.io
+    resources:
+      - certificates
+    verbs:
+      - '*'
+  - apiGroups:
       - maistra.io
     resources:
       - servicemeshmembers
