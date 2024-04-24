@@ -220,6 +220,9 @@ spec:
 
 sleep 3
 echo
+
+oc -n $SM_CP_NS delete pods -l "app in (istiod,istio-ingressgateway, istio-egressgateway)"
+
 echo
 echo "oc wait --for condition=Ready -n $SM_CP_NS smcp/$SM_TENANT_NAME --timeout=300s"
 echo
