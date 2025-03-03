@@ -53,6 +53,7 @@ data:
         - name: patch cluster oauth with new htpasswd secret
           kubernetes.core.k8s:
             state: patched
+            api_version: config.openshift.io/v1
             kind: OAuth
             name: cluster
             definition:
